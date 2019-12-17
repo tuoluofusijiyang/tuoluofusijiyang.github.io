@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>JAVA知识总结与分享</title>
+  
+  <subtitle>JAVA知识总结与分享</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.yangxj.top/"/>
+  <updated>2019-12-17T05:33:31.593Z</updated>
+  <id>http://www.yangxj.top/</id>
+  
+  <author>
+    <name>阿杰(Gatlin)</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springBoot 自定义 banner 与 web 开发</title>
+    <link href="http://www.yangxj.top/2019/springboot11051121/"/>
+    <id>http://www.yangxj.top/2019/springboot11051121/</id>
+    <published>2019-11-04T16:00:00.000Z</published>
+    <updated>2019-12-17T05:33:31.593Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;SpringBootApplication&quot;&gt;&lt;a href=&quot;#SpringBootApplication&quot; class=&quot;headerlink&quot; title=&quot;@SpringBootApplication&quot;&gt;&lt;/a&gt;@SpringBootApplication&lt;/h3&gt;&lt;p&gt;该注解相关的几个方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;exclude, 排除某些类添加至 spring 容器管理，参数为 class 对象&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;excludeName，排除某些类添加至 spring 容器管理，参数为 class path 字符串&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;scanBasePackages，将某些包下的类添加进入 spring 扫描文件，参数为 class path 字符串&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;scanBasePackageClasses, 将某些包下的类添加进入 spring 扫描文件，参数为 class 对象&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="springBoot" scheme="http://www.yangxj.top/categories/springBoot/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="微服务" scheme="http://www.yangxj.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="SpringBoot" scheme="http://www.yangxj.top/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>springboot 项目初始化的开始和结束</title>
+    <link href="http://www.yangxj.top/2019/springboot12171121/"/>
+    <id>http://www.yangxj.top/2019/springboot12171121/</id>
+    <published>2019-10-20T16:00:00.000Z</published>
+    <updated>2019-12-17T03:45:41.612Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;ApplicationContextInitializer 接口&lt;/strong&gt;&lt;br&gt;用来初始化 Spring ConfigurableApplicationContext 应用上下文的回调接口，是在 ConfigurableApplicationContext.refresh() 之前调用。&lt;br&gt;该接口典型的应用场景是 web 应用中需要编程方式对应用上下文做初始化。比如，注册属性源 (property sources) 或者针对上下文的环境信息 environment 激活相应的 profile&lt;br&gt;&lt;strong&gt;代码实现&lt;/strong&gt;&lt;br&gt;默认的 application.properties 文件 (默认指定为生产环境)&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="springBoot" scheme="http://www.yangxj.top/categories/springBoot/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="微服务" scheme="http://www.yangxj.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="SpringBoot" scheme="http://www.yangxj.top/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>springBoot 事件监听和部分注解的运用</title>
+    <link href="http://www.yangxj.top/2019/springboot10201121/"/>
+    <id>http://www.yangxj.top/2019/springboot10201121/</id>
+    <published>2019-10-19T16:00:00.000Z</published>
+    <updated>2019-12-17T03:44:25.301Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;ConfigurationProperties-注解的使用&quot;&gt;&lt;a href=&quot;#ConfigurationProperties-注解的使用&quot; class=&quot;headerlink&quot; title=&quot;@ConfigurationProperties 注解的使用&quot;&gt;&lt;/a&gt;@ConfigurationProperties 注解的使用&lt;/h3&gt;&lt;p&gt;用处&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;根据类型校验和管理 application 中的 bean&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="springBoot" scheme="http://www.yangxj.top/categories/springBoot/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="微服务" scheme="http://www.yangxj.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="SpringBoot" scheme="http://www.yangxj.top/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>springboot 配置环境动态切换和部分注解的运用</title>
+    <link href="http://www.yangxj.top/2019/springboot10151121/"/>
+    <id>http://www.yangxj.top/2019/springboot10151121/</id>
+    <published>2019-10-14T16:00:00.000Z</published>
+    <updated>2019-12-17T03:44:03.535Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;springBoot-配置环境动态切换&quot;&gt;&lt;a href=&quot;#springBoot-配置环境动态切换&quot; class=&quot;headerlink&quot; title=&quot;springBoot 配置环境动态切换&quot;&gt;&lt;/a&gt;springBoot 配置环境动态切换&lt;/h3&gt;&lt;p&gt;建立第一个配置文件（springBoot 默认读取的文件）application.properties&lt;/p&gt;
+&lt;figure class=&quot;highlight ini&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;test.name&lt;/span&gt;=default&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;test.defaultAge&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;test.name&lt;/span&gt;=default&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;test.defaultAge&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;建立第二个配置文件（开发环境）application-dev.properties&lt;/p&gt;
+&lt;figure class=&quot;highlight ini&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;test.name&lt;/span&gt;=dev&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;test.devAge&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;test.name&lt;/span&gt;=dev&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;test.devAge&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;建立第三个配置文件（用户验收测试环境）application-uat.properties&lt;/p&gt;
+&lt;figure class=&quot;highlight ini&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;test.name&lt;/span&gt;=uat&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;test.uatAge&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;test.name&lt;/span&gt;=uat&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;test.uatAge&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ol&gt;
+&lt;li&gt;添加启动参数 (–spring.profiles.active=), 测试结果读取 application.properties 的值  &lt;/li&gt;
+&lt;li&gt;添加启动参数 (–spring.profiles.active=dev), 测试结果读取 application-dev.properties 的值  &lt;/li&gt;
+&lt;li&gt;添加启动参数 (–spring.profiles.active=uat), 测试结果读取 application-uat.properties 的值  &lt;/li&gt;
+&lt;li&gt;添加启动参数 (–spring.profiles.active=uat,dev), 测试结果读取 application-dev.properties 的值  &lt;/li&gt;
+&lt;li&gt;添加启动参数 (–spring.profiles.active=dev,uat), 测试结果读取 application-uat.properties 的值  &lt;/li&gt;
+&lt;li&gt;添加启动参数 (–spring.profiles.active=dev)，可以读到 application.properties 的(test.defaultAge) 值，读不到 uat 的 (test.uatAge) 值。  &lt;/li&gt;
+&lt;li&gt;添加启动参数 (–spring.profiles.active=uat)，可以读到 application.properties 的(test.defaultAge) 值，读不到 dev 的 (test.devAge) 值。  &lt;/li&gt;
+&lt;li&gt;添加启动参数 (–spring.profiles.active=), 可以读到 application.properties 的值，读取不到其他配置文件的值&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="springBoot" scheme="http://www.yangxj.top/categories/springBoot/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="微服务" scheme="http://www.yangxj.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="SpringBoot" scheme="http://www.yangxj.top/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>springboot 建立项目与读取配置文件</title>
+    <link href="http://www.yangxj.top/2019/springboot10121121/"/>
+    <id>http://www.yangxj.top/2019/springboot10121121/</id>
+    <published>2019-10-11T16:00:00.000Z</published>
+    <updated>2019-12-17T05:33:20.162Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;建立maven-项目&quot;&gt;&lt;a href=&quot;#建立maven-项目&quot; class=&quot;headerlink&quot; title=&quot;建立maven 项目&quot;&gt;&lt;/a&gt;建立maven 项目&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://q2jt1v8qv.bkt.clouddn.com/FtFrvuJqSZdUsgp4WXO_L33lLgjC&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://q2jt1v8qv.bkt.clouddn.com/FoQAAKtK5UpHyxrdeP2N8iLFpOSv&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="springBoot" scheme="http://www.yangxj.top/categories/springBoot/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="微服务" scheme="http://www.yangxj.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="SpringBoot" scheme="http://www.yangxj.top/tags/SpringBoot/"/>
+    
+  </entry>
+  
+</feed>

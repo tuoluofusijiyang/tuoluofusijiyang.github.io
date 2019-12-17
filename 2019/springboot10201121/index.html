@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://www.yangxj.top').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"scrollpercent":true,"b2t":true},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="@ConfigurationProperties 注解的使用用处  根据类型校验和管理 application 中的 bean">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springBoot 事件监听和部分注解的运用">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.yangxj.top&#x2F;2019&#x2F;springboot10201121&#x2F;index.html">
+<meta property="og:site_name" content="JAVA知识总结与分享">
+<meta property="og:description" content="@ConfigurationProperties 注解的使用用处  根据类型校验和管理 application 中的 bean">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-12-17T03:44:25.301Z">
+<meta property="article:author" content="阿杰(Gatlin)">
+<meta property="article:tag" content="JAVA">
+<meta property="article:tag" content="微服务">
+<meta property="article:tag" content="SpringBoot">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://www.yangxj.top/2019/springboot10201121/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>springBoot 事件监听和部分注解的运用 | JAVA知识总结与分享</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="JAVA知识总结与分享" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JAVA知识总结与分享</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">JAVA知识总结与分享</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">1</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">5</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜索..." spellcheck="false" type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/tuoluofusijiyang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/springboot10201121/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="阿杰(Gatlin)">
+      <meta itemprop="description" content="小码农的小网站，大家一起学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JAVA知识总结与分享">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          springBoot 事件监听和部分注解的运用
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-20 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-20T00:00:00+08:00">2019-10-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-17 11:44:25" itemprop="dateModified" datetime="2019-12-17T11:44:25+08:00">2019-12-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/springBoot/" itemprop="url" rel="index">
+                    <span itemprop="name">springBoot</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/springboot10201121/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/springboot10201121/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>14k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="ConfigurationProperties-注解的使用"><a href="#ConfigurationProperties-注解的使用" class="headerlink" title="@ConfigurationProperties 注解的使用"></a>@ConfigurationProperties 注解的使用</h3><p>用处</p>
+<ul>
+<li>根据类型校验和管理 application 中的 bean</li>
+</ul>
+<a id="more"></a>
+
+<p>举例使用</p>
+<p>application.properties 的内容</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">test.name</span>=default</span><br><span class="line"><span class="attr">test.age</span>=<span class="number">19</span></span><br><span class="line"><span class="attr">test.friends[0]</span>=Ben</span><br><span class="line"><span class="attr">test.friends[1]</span>=Alice</span><br><span class="line"><span class="attr">test.utils[0]</span>=DateUtils</span><br><span class="line"><span class="attr">test.utils[1]</span>=TimeUtils</span><br><span class="line"><span class="attr">test.name</span>=default</span><br><span class="line"><span class="attr">test.age</span>=<span class="number">19</span></span><br><span class="line"><span class="attr">test.friends[0]</span>=Ben</span><br><span class="line"><span class="attr">test.friends[1]</span>=Alice</span><br><span class="line"><span class="attr">test.utils[0]</span>=DateUtils</span><br><span class="line"><span class="attr">test.utils[1]</span>=TimeUtils</span><br></pre></td></tr></table></figure>
+
+<p>新建 TestProperties 用来接收配置的内容</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line">package com.yxj.spring.properties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.PropertySource;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @ProjectName: springBootDemo</span></span><br><span class="line"><span class="comment"> * @Package: com.yxj.spring.properties</span></span><br><span class="line"><span class="comment"> * @Description: @ConfigurationProperties(prefix="test")，该注解会自动，将配置文件前缀是test的各项，加载至该bean中</span></span><br><span class="line"><span class="comment"> * @Author: 阿杰</span></span><br><span class="line"><span class="comment"> * @CreateDate: 2019/1/23 20:00</span></span><br><span class="line"><span class="comment"> * @UpdateUser: 暂无</span></span><br><span class="line"><span class="comment"> * @UpdateDate: 2019/1/23 20:00</span></span><br><span class="line"><span class="comment"> * @UpdateRemark: The modified content</span></span><br><span class="line"><span class="comment"> * @Version: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">@ConfigurationProperties(prefix="test")</span><br><span class="line"><span class="built_in">public</span> <span class="keyword">class</span> TestProperties &#123;</span><br><span class="line">    private String age;</span><br><span class="line">    private String <span class="type">name</span>;</span><br><span class="line">    private String[] friends;</span><br><span class="line">    private List&lt;String&gt; utils;</span><br><span class="line">    <span class="built_in">public</span> String[] getFriends() &#123;</span><br><span class="line">        <span class="keyword">return</span> friends;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">public</span> TestProperties setFriends(String[] friends) &#123;</span><br><span class="line">        this.friends = friends;</span><br><span class="line">        <span class="keyword">return</span> this;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">public</span> String getAge() &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">public</span> TestProperties setAge(String age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">        <span class="keyword">return</span> this;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">public</span> String getName() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">name</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">public</span> TestProperties setName(String <span class="type">name</span>) &#123;</span><br><span class="line">        this.name = <span class="type">name</span>;</span><br><span class="line">        <span class="keyword">return</span> this;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">public</span> List&lt;String&gt; getUtils() &#123;</span><br><span class="line">        <span class="keyword">return</span> utils;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">public</span> TestProperties setUtils(List&lt;String&gt; utils) &#123;</span><br><span class="line">        this.utils = utils;</span><br><span class="line">        <span class="keyword">return</span> this;</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    <span class="built_in">public</span> String toString() &#123;</span><br><span class="line">        <span class="keyword">return</span> "TestProperties&#123;" +</span><br><span class="line">                "age='" + age + <span class="string">'\'' +</span></span><br><span class="line"><span class="string">                ",  + name + '</span>\<span class="string">''</span> +</span><br><span class="line">                ", friends=" + Arrays.toString(friends) +</span><br><span class="line">                ", utils=" + utils +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">package com.yxj.spring.properties;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.PropertySource;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @ProjectName: springBootDemo</span></span><br><span class="line"><span class="comment"> * @Package: com.yxj.spring.properties</span></span><br><span class="line"><span class="comment"> * @Description: @ConfigurationProperties(prefix="test")，该注解会自动，将配置文件前缀是test的各项，加载至该bean中</span></span><br><span class="line"><span class="comment"> * @Author: 阿杰</span></span><br><span class="line"><span class="comment"> * @CreateDate: 2019/1/23 20:00</span></span><br><span class="line"><span class="comment"> * @UpdateUser: 暂无</span></span><br><span class="line"><span class="comment"> * @UpdateDate: 2019/1/23 20:00</span></span><br><span class="line"><span class="comment"> * @UpdateRemark: The modified content</span></span><br><span class="line"><span class="comment"> * @Version: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">@ConfigurationProperties(prefix="test")</span><br><span class="line"><span class="built_in">public</span> <span class="keyword">class</span> TestProperties &#123;</span><br><span class="line">    private String age;</span><br><span class="line"> </span><br><span class="line">    private String <span class="type">name</span>;</span><br><span class="line"> </span><br><span class="line">    private String[] friends;</span><br><span class="line"> </span><br><span class="line">    private List&lt;String&gt; utils;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">public</span> String[] getFriends() &#123;</span><br><span class="line">        <span class="keyword">return</span> friends;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">public</span> TestProperties setFriends(String[] friends) &#123;</span><br><span class="line">        this.friends = friends;</span><br><span class="line">        <span class="keyword">return</span> this;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">public</span> String getAge() &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">public</span> TestProperties setAge(String age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">        <span class="keyword">return</span> this;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">public</span> String getName() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">name</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">public</span> TestProperties setName(String <span class="type">name</span>) &#123;</span><br><span class="line">        this.name = <span class="type">name</span>;</span><br><span class="line">        <span class="keyword">return</span> this;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">public</span> List&lt;String&gt; getUtils() &#123;</span><br><span class="line">        <span class="keyword">return</span> utils;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">public</span> TestProperties setUtils(List&lt;String&gt; utils) &#123;</span><br><span class="line">        this.utils = utils;</span><br><span class="line">        <span class="keyword">return</span> this;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    @Override</span><br><span class="line">    <span class="built_in">public</span> String toString() &#123;</span><br><span class="line">        <span class="keyword">return</span> "TestProperties&#123;" +</span><br><span class="line">                "age='" + age + <span class="string">'\'' +</span></span><br><span class="line"><span class="string">                ",  + name + '</span>\<span class="string">''</span> +</span><br><span class="line">                ", friends=" + Arrays.toString(friends) +</span><br><span class="line">                ", utils=" + utils +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>springboot 启动类</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yxj.spring;</span><br><span class="line"><span class="keyword">import</span> com.yxj.spring.properties.TestProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.<span class="keyword">annotation</span>.Import;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ProjectName</span>: springBootDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Package</span>: com.yxj.spring</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: 阿杰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span>: 2019/1/18 20:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateUser</span>: 暂无</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateDate</span>: 2019/1/18 20:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateRemark</span>: The modified content</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span>: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Import(TestProperties.class)</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringBootTestRun</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * getBeansOfType(MakeApp.class)会装配bean类型是MakeApp的所有实例</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> static void main(String[] args) &#123;</span><br><span class="line">        ConfigurableApplicationContext run = SpringApplication.run(SpringBootTestRun<span class="class">.<span class="keyword">class</span>, <span class="type">args);</span></span></span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"------------------分割线------------------"</span>);</span><br><span class="line">        System.<span class="keyword">out</span>.println(run.getBean(TestProperties<span class="class">.<span class="keyword">class</span>));</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.yxj.spring;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> com.yxj.spring.properties.TestProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.<span class="keyword">annotation</span>.Import;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ProjectName</span>: springBootDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Package</span>: com.yxj.spring</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: 阿杰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span>: 2019/1/18 20:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateUser</span>: 暂无</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateDate</span>: 2019/1/18 20:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateRemark</span>: The modified content</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span>: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Import(TestProperties.class)</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringBootTestRun</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * getBeansOfType(MakeApp.class)会装配bean类型是MakeApp的所有实例</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> static void main(String[] args) &#123;</span><br><span class="line">        ConfigurableApplicationContext run = SpringApplication.run(SpringBootTestRun<span class="class">.<span class="keyword">class</span>, <span class="type">args);</span></span></span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"------------------分割线------------------"</span>);</span><br><span class="line">        System.<span class="keyword">out</span>.println(run.getBean(TestProperties<span class="class">.<span class="keyword">class</span>));</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试结果</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">------------------分割线------------------</span><br><span class="line">TestProperties&#123;<span class="attribute">age</span>=<span class="string">'19'</span>, <span class="attribute">name</span>=<span class="string">'default'</span>, friends=[Ben, Alice], utils=[DateUtils, TimeUtils]&#125;</span><br><span class="line">------------------分割线------------------</span><br><span class="line">TestProperties&#123;<span class="attribute">age</span>=<span class="string">'19'</span>, <span class="attribute">name</span>=<span class="string">'default'</span>, friends=[Ben, Alice], utils=[DateUtils, TimeUtils]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ul>
+<li><p>@ConfigurationProperties(prefix=”test”)，该注解会自动，将配置文件前缀是 test 的各项，加载至该 bean 中</p>
+</li>
+<li><p>需要给定各个属性值的 get，set 方法</p>
+</li>
+<li><p>名字需要与配置项的 key 值对应</p>
+</li>
+<li><p>可以加载数组，集合</p>
+</li>
+<li><p>需要 @Component 注解或者其他方式将该类交由 spring 管理</p>
+</li>
+</ul>
+<h3 id="EnableAutoConfiguration-注解的使用"><a href="#EnableAutoConfiguration-注解的使用" class="headerlink" title="@EnableAutoConfiguration 注解的使用"></a>@EnableAutoConfiguration 注解的使用</h3><p>解析</p>
+<p>1.springBoot 启动类会使用 @SpringBootApplication<br>2. 点进入源代码发现改注解是一个复合注解，由好几个注解共同组合而成</p>
+<ul>
+<li><p>@SpringBootConfiguration 标注当前类是配置类，并会将当前类内声明的一个或多个以 @Bean 注解标记的方法的实例纳入到 spring 容器中，并且实例名就是方法名。</p>
+</li>
+<li><p>@EnableAutoConfiguration，自动配置注解，自动载入应用程序所需的所有 Bean</p>
+</li>
+<li><p>@ComponentScan：默认扫描 @SpringBootApplication 所在类的同级目录以及它的子目录。这也就是 springBoot 启动类建立在项目根目录的原因</p>
+</li>
+</ul>
+<p>尝试</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yxj.spring;</span><br><span class="line"><span class="keyword">import</span> com.yxj.spring.properties.TestProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.EnableAutoConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.<span class="keyword">annotation</span>.Import;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ProjectName</span>: springBootDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Package</span>: com.yxj.spring</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: 阿杰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span>: 2019/1/18 20:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateUser</span>: 暂无</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateDate</span>: 2019/1/18 20:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateRemark</span>: The modified content</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span>: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Import(TestProperties.class)</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringBootTestRun</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> static void main(String[] args) &#123;</span><br><span class="line">        ConfigurableApplicationContext run = SpringApplication.run(SpringBootTestRun<span class="class">.<span class="keyword">class</span>, <span class="type">args);</span></span></span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"------------------分割线------------------"</span>);</span><br><span class="line">        System.<span class="keyword">out</span>.println(run.getBean(TestProperties<span class="class">.<span class="keyword">class</span>));</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.yxj.spring;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> com.yxj.spring.properties.TestProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.EnableAutoConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.<span class="keyword">annotation</span>.Import;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ProjectName</span>: springBootDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Package</span>: com.yxj.spring</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: 阿杰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span>: 2019/1/18 20:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateUser</span>: 暂无</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateDate</span>: 2019/1/18 20:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateRemark</span>: The modified content</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span>: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Import(TestProperties.class)</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringBootTestRun</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> static void main(String[] args) &#123;</span><br><span class="line">        ConfigurableApplicationContext run = SpringApplication.run(SpringBootTestRun<span class="class">.<span class="keyword">class</span>, <span class="type">args);</span></span></span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"------------------分割线------------------"</span>);</span><br><span class="line">        System.<span class="keyword">out</span>.println(run.getBean(TestProperties<span class="class">.<span class="keyword">class</span>));</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">------------------分割线------------------</span><br><span class="line">TestProperties&#123;<span class="attribute">age</span>=<span class="string">'19'</span>, <span class="attribute">name</span>=<span class="string">'default'</span>, friends=[Ben, Alice], utils=[DateUtils, TimeUtils]&#125;</span><br><span class="line">------------------分割线------------------</span><br><span class="line">TestProperties&#123;<span class="attribute">age</span>=<span class="string">'19'</span>, <span class="attribute">name</span>=<span class="string">'default'</span>, friends=[Ben, Alice], utils=[DateUtils, TimeUtils]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结</p>
+<p>将 @SpringBootApplication 替换为 @EnableAutoConfiguration，还是能正常输出 spring 管理的 bean 对象<br>@EnableAutoConfiguration 注解导入了 AutoConfigurationImportSelector 类，最终的接口类是 ImportSelector<br>源代码注释解释了，ImportSelector 该接口的方法的返回值都会被纳入到 spring 容器管理中<br>ImportSelector 的具体使用与自定义，可以查看大佬博客 <a href="https://blog.csdn.net/weixin_34452850/article/details/82883033" target="_blank" rel="external nofollow noopener noreferrer">https://blog.csdn.net/weixin_34452850/article/details/82883033</a></p>
+<h3 id="springBoot-事件监听"><a href="#springBoot-事件监听" class="headerlink" title="springBoot 事件监听"></a>springBoot 事件监听</h3><p>步骤</p>
+<ul>
+<li><p>自定义事件，一般是继承 ApplicationEvent 抽象类</p>
+</li>
+<li><p>Spring 的事件监听器接口，所有的监听器都实现了 ApplicationListener 接口</p>
+</li>
+<li><p>发布事件</p>
+</li>
+</ul>
+<p>代码实现</p>
+<p>定义自定义事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yxj.spring.monitor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationEvent;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ProjectName</span>: springBootDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Package</span>: com.yxj.spring.monitor</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 定义事件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: 阿杰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span>: 2019/1/23 22:16</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateUser</span>: 暂无</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateDate</span>: 2019/1/23 22:16</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateRemark</span>: The modified content</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span>: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyEvent</span> <span class="keyword">extends</span> <span class="title">ApplicationEvent</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Create a new ApplicationEvent.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> source the object on which the event initially occurred (never &#123;<span class="doctag">@code</span> null&#125;)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyEvent</span><span class="params">(String source)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(source);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.yxj.spring.monitor;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationEvent;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ProjectName</span>: springBootDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Package</span>: com.yxj.spring.monitor</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 定义事件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: 阿杰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span>: 2019/1/23 22:16</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateUser</span>: 暂无</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateDate</span>: 2019/1/23 22:16</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateRemark</span>: The modified content</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span>: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyEvent</span> <span class="keyword">extends</span> <span class="title">ApplicationEvent</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Create a new ApplicationEvent.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> source the object on which the event initially occurred (never &#123;<span class="doctag">@code</span> null&#125;)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyEvent</span><span class="params">(String source)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(source);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>定义事件监听器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yxj.spring.monitor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationListener;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ProjectName</span>: springBootDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Package</span>: com.yxj.spring.monitor</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 定义事件监听器</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: 阿杰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span>: 2019/1/23 22:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateUser</span>: 暂无</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateDate</span>: 2019/1/23 22:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateRemark</span>: The modified content</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span>: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyApplicationListener</span> <span class="keyword">implements</span> <span class="title">ApplicationListener</span>&lt;<span class="title">MyEvent</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(MyEvent event)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"接收到事件:"</span>+event.getClass());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.yxj.spring.monitor;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationListener;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ProjectName</span>: springBootDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Package</span>: com.yxj.spring.monitor</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 定义事件监听器</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: 阿杰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span>: 2019/1/23 22:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateUser</span>: 暂无</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateDate</span>: 2019/1/23 22:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateRemark</span>: The modified content</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span>: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyApplicationListener</span> <span class="keyword">implements</span> <span class="title">ApplicationListener</span>&lt;<span class="title">MyEvent</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(MyEvent event)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"接收到事件:"</span>+event.getClass());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>springBoot 启动类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yxj.spring;</span><br><span class="line"><span class="keyword">import</span> com.yxj.spring.monitor.MyApplicationListener;</span><br><span class="line"><span class="keyword">import</span> com.yxj.spring.monitor.MyEvent;</span><br><span class="line"><span class="keyword">import</span> com.yxj.spring.properties.TestProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationListener;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Import;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ProjectName</span>: springBootDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Package</span>: com.yxj.spring</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: 阿杰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span>: 2019/1/18 20:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateUser</span>: 暂无</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateDate</span>: 2019/1/18 20:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateRemark</span>: The modified content</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span>: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Import</span>(TestProperties<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">SpringBootApplication</span></span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">SpringBootTestRun</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ApplicationListener myApplicationListener = <span class="keyword">new</span> MyApplicationListener();</span><br><span class="line">        MyEvent myEvent = <span class="keyword">new</span> MyEvent(<span class="string">""</span>);</span><br><span class="line">        SpringApplication springBootTestRun = <span class="keyword">new</span> SpringApplication(SpringBootTestRun<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        springBootTestRun.addListeners(myApplicationListener);</span><br><span class="line">        ConfigurableApplicationContext run = springBootTestRun.run(args);</span><br><span class="line">        run.publishEvent(myEvent);</span><br><span class="line">        run.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.yxj.spring;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> com.yxj.spring.monitor.MyApplicationListener;</span><br><span class="line"><span class="keyword">import</span> com.yxj.spring.monitor.MyEvent;</span><br><span class="line"><span class="keyword">import</span> com.yxj.spring.properties.TestProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationListener;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Import;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ProjectName</span>: springBootDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Package</span>: com.yxj.spring</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: 阿杰</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span>: 2019/1/18 20:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateUser</span>: 暂无</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateDate</span>: 2019/1/18 20:18</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@UpdateRemark</span>: The modified content</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span>: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Import</span>(TestProperties<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">SpringBootApplication</span></span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">SpringBootTestRun</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ApplicationListener myApplicationListener = <span class="keyword">new</span> MyApplicationListener();</span><br><span class="line">        MyEvent myEvent = <span class="keyword">new</span> MyEvent(<span class="string">""</span>);</span><br><span class="line">        SpringApplication springBootTestRun = <span class="keyword">new</span> SpringApplication(SpringBootTestRun<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        springBootTestRun.addListeners(myApplicationListener);</span><br><span class="line">        ConfigurableApplicationContext run = springBootTestRun.run(args);</span><br><span class="line">        run.publishEvent(myEvent);</span><br><span class="line">        run.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试结果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">接收到事件<span class="selector-pseudo">:class</span> <span class="selector-tag">com</span><span class="selector-class">.yxj</span><span class="selector-class">.spring</span><span class="selector-class">.monitor</span><span class="selector-class">.MyEvent</span></span><br></pre></td></tr></table></figure>
+
+<p>重点</p>
+<p>将监听器添加至 spring 容器管理几种方式<br>1.springBootTestRun.addListeners(myApplicationListener);<br>2. 在类上面加入 @Component 注解，@Service 等注解<br>3. 在 application.properties 添加参数 context.listener.classes = 监听器类的项目全路径<br>4. 通过 @Eventlistener 注解，方法参数为监听的类 ApplicationEvent 或者其子类，一些自定义的监听器，或者 springBoot 系统启动时加载初始化信息等都可以通过 ApplicationEvent + 改变参数来实现监听</p>
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><ul>
+<li><p>本人是与 springBoot 教学视频同步学习，此文章是看视频总结出来的重点内容.</p>
+</li>
+<li><p>如果觉得文章描绘的不够清楚，欢迎留言，也可以点击关于我，关注公众号，在公众号内发送关键字 “springboot” 或者 “springBoot” 领取 springBoot 教程。</p>
+</li>
+</ul>
+
+    </div>
+
+	
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------文章结束，更多精彩，尽在公众号-------------</div>
+    
+</div>
+
+	  
+	</div>
+
+	
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="阿杰(Gatlin) 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="阿杰(Gatlin) 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>阿杰(Gatlin)
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.yangxj.top/2019/springboot10201121/" title="springBoot 事件监听和部分注解的运用">http://www.yangxj.top/2019/springboot10201121/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+              <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag"># 微服务</a>
+              <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/springboot10151121/" rel="prev" title="springboot 配置环境动态切换和部分注解的运用">
+      <i class="fa fa-chevron-left"></i> springboot 配置环境动态切换和部分注解的运用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/springboot12171121/" rel="next" title="springboot 项目初始化的开始和结束">
+      springboot 项目初始化的开始和结束 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ConfigurationProperties-注解的使用"><span class="nav-text">@ConfigurationProperties 注解的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EnableAutoConfiguration-注解的使用"><span class="nav-text">@EnableAutoConfiguration 注解的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springBoot-事件监听"><span class="nav-text">springBoot 事件监听</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#声明"><span class="nav-text">声明</span></a></li></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="阿杰(Gatlin)" src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">阿杰(Gatlin)</p>
+  <div class="site-description" itemprop="description">小码农的小网站，大家一起学习</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tuoluofusijiyang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tuoluofusijiyang" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/yang1780409810" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;yang1780409810" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yang1780409810@gmail.com" title="E-Mail → mailto:yang1780409810@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿杰(Gatlin)</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">93k</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="150" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: true,
+      appId: '2KyjTWVWx8Y4M7fBC2BDNURn-gzGzoHsz',
+      appKey: 'eibDQkqBWoHAMCrpN4tFIoKR',
+      placeholder: "老衲有意见",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: false,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
+<!--   -->
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+
+
+<!--花  与小红心 二选一  fireworks开关在主题配置文件中-->
+
