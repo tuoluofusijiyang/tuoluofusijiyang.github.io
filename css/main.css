@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #e88bb4;
+  background: #780aff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1447,7 +1447,7 @@ pre .javascript .function {
   white-space: nowrap;
 }
 .post-toc .nav .nav-child {
-  display: none;
+  display: block;
 }
 .post-toc .nav .active > .nav-child {
   display: block;
@@ -2822,15 +2822,4 @@ ul.breadcrumb li + li:last-child {
   .pagination {
     margin: 8px 0 0;
   }
-}
-body {
-  background-image: url("https://source.unsplash.com/random/1600x900");
-  background-repeat: repeat;
-  background-attachment: fixed;
-}
-.main-inner {
-  opacity: 0.8;
-}
-.header-inner {
-  opacity: 0.8;
 }
