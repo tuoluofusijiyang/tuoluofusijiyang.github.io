@@ -2,26 +2,339 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>JAVA知识总结与分享</title>
   
-  <subtitle>JAVA知识总结与分享</subtitle>
+  <subtitle>阿杰</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yangxj.top/"/>
-  <updated>2019-12-18T01:12:45.464Z</updated>
+  <updated>2019-12-18T05:44:31.364Z</updated>
   <id>http://www.yangxj.top/</id>
   
   <author>
-    <name>阿杰(Gatlin)</name>
+    <name>阿杰</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>设计模式-外观模式</title>
+    <link href="http://www.yangxj.top/2019/design12181107/"/>
+    <id>http://www.yangxj.top/2019/design12181107/</id>
+    <published>2019-12-01T16:00:00.000Z</published>
+    <updated>2019-12-18T05:44:31.364Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;外观模式&lt;br&gt;定义：提供了一个统一的接口，用来访问子系统中的一群接口，外观定义了一个高层接口，让子系统更容易使用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;举例：我需要打开微信发送给某个好友某些内容，其中的过程包括了，下载微信，输入账号密码，点击登陆，找到好友，发送消息。这些整体封装成了一个对外的方法，当我调用需要这个流程的时候，我通过一个方法的调用，直接就能实现全部的流程，不需要在请求方，去组合方法去完成这个操作。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;设计原则：莫忒耳原则又称最少知识原则，只和你的密友谈话，通过 “举例”，可以明白这个原则的定义。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;原则缺点：采用这个原则会导致更多的” 包装 “对象被制造出来，以处理和其他组件的沟通，可能会导致复杂度和开发时间的增加，降低运行时性能&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;设计模式比较：外观模式，适配器模式，装饰者模式&lt;br&gt;适配器模式：当需要使用一个现有的类，但是接口并不符合要求，考虑使用适配器模式。将一个对象包装起来改变接口。&lt;br&gt;外观模式：当需要简化并统一一个 / 一群很大的接口的时候，考虑使用外观模式。依托与子系统执行。&lt;br&gt;装饰着模式：将一个对象包装起来，增加新的行为和责任。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式-适配器模式</title>
+    <link href="http://www.yangxj.top/2019/design12181106/"/>
+    <id>http://www.yangxj.top/2019/design12181106/</id>
+    <published>2019-11-29T16:00:00.000Z</published>
+    <updated>2019-12-18T05:44:40.383Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;适配器模式定义：将一个类的接口，转化成客户期望的另一个接口，适配器让原来接口不兼容的类可以合作无间。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;适配器在现实中的表现：插座转化器，形状拼图等等。&lt;br&gt;面向对象中的实现：&lt;br&gt;本文例子：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;狗类，兔子类，适配器类，测试类&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;要求：  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;缺少兔子类对象，先用狗类冒充一下  &lt;/li&gt;
+&lt;li&gt;不会让客户调用兔子类的方法，发生改变（例如在客户调用的方法内做判断如果是某个值，去调用狗类的方法，去冒充兔子类）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式-命令模式</title>
+    <link href="http://www.yangxj.top/2019/design12181104/"/>
+    <id>http://www.yangxj.top/2019/design12181104/</id>
+    <published>2019-11-25T16:00:00.000Z</published>
+    <updated>2019-12-18T05:44:55.724Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;老板：阿飞，咱们公司又接了个新项目，一个客户，，卧室和客厅很大，电灯电视开关也不好找，所以希望制造一个遥控器来控制一些家具的开启与关闭，目前需要 5 个按键，卧室的灯，卧室的电视，客厅的灯，客厅的电视，在留一个预备按键。我等会把需求文档给你。&lt;br&gt;项目组长阿飞：好的，老板&lt;br&gt;项目组长阿飞：小三，来了个需求，你看下，你先设计一下架构&lt;br&gt;阿三：好的，飞哥&lt;/p&gt;
+&lt;p&gt;三天过后：飞哥，好了，你看下&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式-模板方法模式</title>
+    <link href="http://www.yangxj.top/2019/design12181105/"/>
+    <id>http://www.yangxj.top/2019/design12181105/</id>
+    <published>2019-11-23T16:00:00.000Z</published>
+    <updated>2019-12-18T05:44:54.188Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;模板方法模式&lt;br&gt;定义：在一个方法中定义一个算法的骨架，将一些处理的步骤延迟到子类去做处理，可以使在子类不改变算法结构的情况下， 重新定义算法的步骤。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;设计院原则&quot;&gt;&lt;a href=&quot;#设计院原则&quot; class=&quot;headerlink&quot; title=&quot;设计院原则&quot;&gt;&lt;/a&gt;设计院原则&lt;/h3&gt;&lt;p&gt;好莱坞原则：别调用我们，我们会调用你。&lt;/p&gt;
+&lt;p&gt;先来看下简单的代码实现：&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式-迭代器模式</title>
+    <link href="http://www.yangxj.top/2019/design12181102/"/>
+    <id>http://www.yangxj.top/2019/design12181102/</id>
+    <published>2019-11-21T16:00:00.000Z</published>
+    <updated>2019-12-18T05:47:26.553Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;迭代器模式&lt;br&gt;提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露其内部的表示&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;情节&quot;&gt;&lt;a href=&quot;#情节&quot; class=&quot;headerlink&quot; title=&quot;情节&quot;&gt;&lt;/a&gt;情节&lt;/h3&gt;&lt;p&gt;有两家餐厅，共有两个菜单，两家准备合并，每个餐厅都有一个销售系统，但是内部菜单的组成结构稍有不同，一个是用数组存储菜单对象，一个是用集合存储菜单对象&lt;/p&gt;
+&lt;h3 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h3&gt;&lt;p&gt;将两个菜单合并显示&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式-抽象工厂模式</title>
+    <link href="http://www.yangxj.top/2019/design12181101/"/>
+    <id>http://www.yangxj.top/2019/design12181101/</id>
+    <published>2019-11-19T16:00:00.000Z</published>
+    <updated>2019-12-18T05:47:38.317Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;老板：阿飞，上次面包店老板找我聊了一下，他们是大规模的从各大小原料商铺进的原料，出现了好多偷工减料的情况，现在他们做大了，想自己开几个原料提供点，如果中国的顾客去买，发现原料用尽，就要去找中国原料提供点，拿原料，这个功能看看好不好实现，如果好实现，你就开始做吧！&lt;/p&gt;
+&lt;p&gt;项目组长阿飞：这个可以实现，我去操作吧&lt;/p&gt;
+&lt;p&gt;项目组长阿飞：小三，来需求了…………, 听懂了吗？你应该知道怎么拓展代码。&lt;/p&gt;
+&lt;p&gt;阿三：嗯嗯，我知道，我去拓展一下&lt;/p&gt;
+&lt;p&gt;三天过后。。&lt;/p&gt;
+&lt;p&gt;阿三：飞哥，设计好了，你看下。&lt;/p&gt;
+&lt;p&gt;这个是一个地址描述类，主要是表明是哪个地区的，有什么不同，这个是可以拓展的&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式-工厂模式</title>
+    <link href="http://www.yangxj.top/2019/design12181103/"/>
+    <id>http://www.yangxj.top/2019/design12181103/</id>
+    <published>2019-11-17T16:00:00.000Z</published>
+    <updated>2019-12-18T05:47:27.736Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;老板：阿飞啊，我们公司最近接了个项目，你看着设计一下，我给你说下需求。&lt;br&gt;项目组长阿飞：好啊，什么需求？&lt;br&gt;老板：我们找了一个合作的商铺，他们要设计一套面包销售系统。主要功能，根据用户选择的面包种类来下订单，面包目前有奶油口味面包和苹果口味面包，所有面包的制作流程都是 — 搅拌，搓圆，加工，烘烤。&lt;br&gt;项目组长阿飞：好的，我去想想怎么设计。&lt;br&gt;项目组长阿飞：小三啊，我给你个任务，…………, 听懂了吗？&lt;br&gt;阿三：听懂了，飞哥。&lt;br&gt;项目组长阿飞：嗯嗯，好的，这个任务就交给你了，我要去处理点事情，我相信你。&lt;br&gt;阿三：。。。&lt;br&gt;三天过后。&lt;br&gt;阿三：飞哥，设计好了，你看下。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="设计模式" scheme="http://www.yangxj.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构-栈</title>
+    <link href="http://www.yangxj.top/2019/datastructure12181140/"/>
+    <id>http://www.yangxj.top/2019/datastructure12181140/</id>
+    <published>2019-11-13T16:00:00.000Z</published>
+    <updated>2019-12-18T05:44:37.395Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;数据结构 - 栈&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;p&gt;栈（英语：stack）又称为堆栈或堆叠，栈作为一种数据结构，它按照先进后出的原则存储数据，先进入的数据被压入栈底，最后的数据在栈顶，需要读数据的时候从栈顶开始弹出数据（最后一个数据被第一个读出来）。&lt;br&gt;　　由于堆叠数据结构只允许在一端进行操作，因而按照后进先出（LIFO, Last In First Out）的原理运作。栈也称为后进先出表&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="数据结构与算法" scheme="http://www.yangxj.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="数据结构与算法" scheme="http://www.yangxj.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构-队列</title>
+    <link href="http://www.yangxj.top/2019/datastructure12181139/"/>
+    <id>http://www.yangxj.top/2019/datastructure12181139/</id>
+    <published>2019-11-10T16:00:00.000Z</published>
+    <updated>2019-12-18T05:44:59.117Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;数据结构 - 队列&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;p&gt;队列（queue）在计算机科学中，是一种先进先出的线性表。&lt;br&gt;它只允许在表的前端进行删除操作，而在表的后端进行插入操作。进行插入操作的端称为队尾，进行删除操作的端称为队头。队列中没有元素时，称为空队列。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="数据结构与算法" scheme="http://www.yangxj.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="数据结构与算法" scheme="http://www.yangxj.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构-数组</title>
+    <link href="http://www.yangxj.top/2019/datastructure12181129/"/>
+    <id>http://www.yangxj.top/2019/datastructure12181129/</id>
+    <published>2019-11-06T16:00:00.000Z</published>
+    <updated>2019-12-18T05:45:00.638Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt; 数据结构 - 数组&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;数据结构中最基本的一个结构就是&lt;strong&gt;线性结构&lt;/strong&gt;，而线性结构又分为连续存储结构和离散存储结构。所谓的&lt;strong&gt;连续存储结构&lt;/strong&gt;其实就是数组。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;优点：&lt;/strong&gt;插入块如果知道坐标可以快速去地存取&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;缺点：&lt;/strong&gt;查找慢, 删除慢, 大小固定&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="数据结构与算法" scheme="http://www.yangxj.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="数据结构与算法" scheme="http://www.yangxj.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>leetCode No.1</title>
+    <link href="http://www.yangxj.top/2019/datastructure12181142/"/>
+    <id>http://www.yangxj.top/2019/datastructure12181142/</id>
+    <published>2019-11-06T16:00:00.000Z</published>
+    <updated>2019-12-18T05:37:00.344Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;leetCode 第一题&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h3&gt;&lt;p&gt;给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。&lt;br&gt;你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。&lt;/p&gt;
+&lt;h3 id=&quot;示例&quot;&gt;&lt;a href=&quot;#示例&quot; class=&quot;headerlink&quot; title=&quot;示例&quot;&gt;&lt;/a&gt;示例&lt;/h3&gt;&lt;p&gt;给定 nums = [2, 7, 11, 15], target = 9&lt;br&gt;因为 nums[0] + nums[1] = 2 + 7 = 9&lt;br&gt;所以返回 [0, 1]&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="数据结构与算法" scheme="http://www.yangxj.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
+    
+      <category term="数据结构与算法" scheme="http://www.yangxj.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="leetCode" scheme="http://www.yangxj.top/tags/leetCode/"/>
+    
+  </entry>
+  
+  <entry>
     <title>springBoot 自定义 banner 与 web 开发</title>
     <link href="http://www.yangxj.top/2019/springboot11051121/"/>
     <id>http://www.yangxj.top/2019/springboot11051121/</id>
     <published>2019-11-04T16:00:00.000Z</published>
-    <updated>2019-12-18T01:12:45.464Z</updated>
+    <updated>2019-12-18T03:35:06.524Z</updated>
     
     <summary type="html">
     
@@ -40,7 +353,7 @@
     </summary>
     
     
-      <category term="springBoot" scheme="http://www.yangxj.top/categories/springBoot/"/>
+      <category term="微服务" scheme="http://www.yangxj.top/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
       <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
@@ -56,7 +369,7 @@
     <link href="http://www.yangxj.top/2019/springboot12171121/"/>
     <id>http://www.yangxj.top/2019/springboot12171121/</id>
     <published>2019-10-20T16:00:00.000Z</published>
-    <updated>2019-12-18T01:12:37.295Z</updated>
+    <updated>2019-12-18T03:35:00.357Z</updated>
     
     <summary type="html">
     
@@ -65,7 +378,7 @@
     </summary>
     
     
-      <category term="springBoot" scheme="http://www.yangxj.top/categories/springBoot/"/>
+      <category term="微服务" scheme="http://www.yangxj.top/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
       <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
@@ -81,7 +394,7 @@
     <link href="http://www.yangxj.top/2019/springboot10201121/"/>
     <id>http://www.yangxj.top/2019/springboot10201121/</id>
     <published>2019-10-19T16:00:00.000Z</published>
-    <updated>2019-12-18T01:12:27.363Z</updated>
+    <updated>2019-12-18T03:34:55.524Z</updated>
     
     <summary type="html">
     
@@ -93,7 +406,7 @@
     </summary>
     
     
-      <category term="springBoot" scheme="http://www.yangxj.top/categories/springBoot/"/>
+      <category term="微服务" scheme="http://www.yangxj.top/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
       <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
@@ -109,7 +422,7 @@
     <link href="http://www.yangxj.top/2019/springboot10151121/"/>
     <id>http://www.yangxj.top/2019/springboot10151121/</id>
     <published>2019-10-14T16:00:00.000Z</published>
-    <updated>2019-12-18T01:12:20.408Z</updated>
+    <updated>2019-12-18T03:35:11.891Z</updated>
     
     <summary type="html">
     
@@ -136,7 +449,7 @@
     </summary>
     
     
-      <category term="springBoot" scheme="http://www.yangxj.top/categories/springBoot/"/>
+      <category term="微服务" scheme="http://www.yangxj.top/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
       <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>
@@ -152,7 +465,7 @@
     <link href="http://www.yangxj.top/2019/springboot10121121/"/>
     <id>http://www.yangxj.top/2019/springboot10121121/</id>
     <published>2019-10-11T16:00:00.000Z</published>
-    <updated>2019-12-18T01:12:11.311Z</updated>
+    <updated>2019-12-18T03:34:42.861Z</updated>
     
     <summary type="html">
     
@@ -162,7 +475,7 @@
     </summary>
     
     
-      <category term="springBoot" scheme="http://www.yangxj.top/categories/springBoot/"/>
+      <category term="微服务" scheme="http://www.yangxj.top/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
       <category term="JAVA" scheme="http://www.yangxj.top/tags/JAVA/"/>

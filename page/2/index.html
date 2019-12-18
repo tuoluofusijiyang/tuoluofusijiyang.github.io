@@ -49,14 +49,14 @@
   <meta name="description" content="小码农跟大家一起进步">
 <meta property="og:type" content="website">
 <meta property="og:title" content="JAVA知识总结与分享">
-<meta property="og:url" content="http:&#x2F;&#x2F;www.yangxj.top&#x2F;index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.yangxj.top&#x2F;page&#x2F;2&#x2F;index.html">
 <meta property="og:site_name" content="JAVA知识总结与分享">
 <meta property="og:description" content="小码农跟大家一起进步">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="阿杰">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://www.yangxj.top/">
+<link rel="canonical" href="http://www.yangxj.top/page/2/">
 
 
 <script id="page-configurations">
@@ -207,7 +207,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/design12181107/">
+    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/datastructure12181142/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -221,7 +221,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/design12181107/" class="post-title-link" itemprop="url">设计模式-外观模式</a>
+            <a href="/2019/datastructure12181142/" class="post-title-link" itemprop="url">leetCode No.1</a>
         </h2>
 
         <div class="post-meta">
@@ -231,14 +231,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-02 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-02T00:00:00+08:00">2019-12-02</time>
+              <time title="创建时间：2019-11-07 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-07T00:00:00+08:00">2019-11-07</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 13:44:31" itemprop="dateModified" datetime="2019-12-18T13:44:31+08:00">2019-12-18</time>
+                <time title="修改时间：2019-12-18 13:37:00" itemprop="dateModified" datetime="2019-12-18T13:37:00+08:00">2019-12-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,8 +246,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
                   </a>
                 </span>
             </span>
@@ -261,8 +261,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/design12181107/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/design12181107/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/datastructure12181142/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/datastructure12181142/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -285,19 +285,13 @@
 
       
           <blockquote>
-<p>外观模式<br>定义：提供了一个统一的接口，用来访问子系统中的一群接口，外观定义了一个高层接口，让子系统更容易使用。</p>
+<p>leetCode 第一题</p>
 </blockquote>
-<hr>
-<p>举例：我需要打开微信发送给某个好友某些内容，其中的过程包括了，下载微信，输入账号密码，点击登陆，找到好友，发送消息。这些整体封装成了一个对外的方法，当我调用需要这个流程的时候，我通过一个方法的调用，直接就能实现全部的流程，不需要在请求方，去组合方法去完成这个操作。</p>
-<hr>
-<p>设计原则：莫忒耳原则又称最少知识原则，只和你的密友谈话，通过 “举例”，可以明白这个原则的定义。</p>
-<hr>
-<p>原则缺点：采用这个原则会导致更多的” 包装 “对象被制造出来，以处理和其他组件的沟通，可能会导致复杂度和开发时间的增加，降低运行时性能</p>
-<hr>
-<p>设计模式比较：外观模式，适配器模式，装饰者模式<br>适配器模式：当需要使用一个现有的类，但是接口并不符合要求，考虑使用适配器模式。将一个对象包装起来改变接口。<br>外观模式：当需要简化并统一一个 / 一群很大的接口的时候，考虑使用外观模式。依托与子系统执行。<br>装饰着模式：将一个对象包装起来，增加新的行为和责任。</p>
+<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。<br>你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/design12181107/#more" rel="contents">
+              <a class="btn" href="/2019/datastructure12181142/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -327,7 +321,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/design12181106/">
+    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/springboot11051121/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -341,7 +335,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/design12181106/" class="post-title-link" itemprop="url">设计模式-适配器模式</a>
+            <a href="/2019/springboot11051121/" class="post-title-link" itemprop="url">springBoot 自定义 banner 与 web 开发</a>
         </h2>
 
         <div class="post-meta">
@@ -351,14 +345,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-11-30 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-30T00:00:00+08:00">2019-11-30</time>
+              <time title="创建时间：2019-11-05 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-05T00:00:00+08:00">2019-11-05</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 13:44:40" itemprop="dateModified" datetime="2019-12-18T13:44:40+08:00">2019-12-18</time>
+                <time title="修改时间：2019-12-18 11:35:06" itemprop="dateModified" datetime="2019-12-18T11:35:06+08:00">2019-12-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -366,8 +360,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">微服务</span>
                   </a>
                 </span>
             </span>
@@ -381,8 +375,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/design12181106/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/design12181106/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/springboot11051121/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/springboot11051121/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -392,7 +386,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4k</span>
+              <span>32k</span>
             </span>
 
         </div>
@@ -404,23 +398,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>适配器模式定义：将一个类的接口，转化成客户期望的另一个接口，适配器让原来接口不兼容的类可以合作无间。</p>
-</blockquote>
-<p>适配器在现实中的表现：插座转化器，形状拼图等等。<br>面向对象中的实现：<br>本文例子：</p>
+          <h3 id="SpringBootApplication"><a href="#SpringBootApplication" class="headerlink" title="@SpringBootApplication"></a>@SpringBootApplication</h3><p>该注解相关的几个方法</p>
 <ul>
-<li>狗类，兔子类，适配器类，测试类</li>
+<li><p>exclude, 排除某些类添加至 spring 容器管理，参数为 class 对象</p>
+</li>
+<li><p>excludeName，排除某些类添加至 spring 容器管理，参数为 class path 字符串</p>
+</li>
+<li><p>scanBasePackages，将某些包下的类添加进入 spring 扫描文件，参数为 class path 字符串</p>
+</li>
+<li><p>scanBasePackageClasses, 将某些包下的类添加进入 spring 扫描文件，参数为 class 对象</p>
+</li>
 </ul>
-<hr>
-<p>要求：  </p>
-<ol>
-<li>缺少兔子类对象，先用狗类冒充一下  </li>
-<li>不会让客户调用兔子类的方法，发生改变（例如在客户调用的方法内做判断如果是某个值，去调用狗类的方法，去冒充兔子类）</li>
-</ol>
-<hr>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/design12181106/#more" rel="contents">
+              <a class="btn" href="/2019/springboot11051121/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -450,7 +441,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/design12181104/">
+    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/springboot12171121/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -464,7 +455,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/design12181104/" class="post-title-link" itemprop="url">设计模式-命令模式</a>
+            <a href="/2019/springboot12171121/" class="post-title-link" itemprop="url">springboot 项目初始化的开始和结束</a>
         </h2>
 
         <div class="post-meta">
@@ -474,14 +465,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-11-26 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-26T00:00:00+08:00">2019-11-26</time>
+              <time title="创建时间：2019-10-21 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-21T00:00:00+08:00">2019-10-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 13:44:55" itemprop="dateModified" datetime="2019-12-18T13:44:55+08:00">2019-12-18</time>
+                <time title="修改时间：2019-12-18 11:35:00" itemprop="dateModified" datetime="2019-12-18T11:35:00+08:00">2019-12-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -489,8 +480,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">微服务</span>
                   </a>
                 </span>
             </span>
@@ -504,8 +495,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/design12181104/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/design12181104/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/springboot12171121/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/springboot12171121/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -515,7 +506,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>20k</span>
+              <span>9k</span>
             </span>
 
         </div>
@@ -527,11 +518,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>老板：阿飞，咱们公司又接了个新项目，一个客户，，卧室和客厅很大，电灯电视开关也不好找，所以希望制造一个遥控器来控制一些家具的开启与关闭，目前需要 5 个按键，卧室的灯，卧室的电视，客厅的灯，客厅的电视，在留一个预备按键。我等会把需求文档给你。<br>项目组长阿飞：好的，老板<br>项目组长阿飞：小三，来了个需求，你看下，你先设计一下架构<br>阿三：好的，飞哥</p>
-<p>三天过后：飞哥，好了，你看下</p>
+          <p><strong>ApplicationContextInitializer 接口</strong><br>用来初始化 Spring ConfigurableApplicationContext 应用上下文的回调接口，是在 ConfigurableApplicationContext.refresh() 之前调用。<br>该接口典型的应用场景是 web 应用中需要编程方式对应用上下文做初始化。比如，注册属性源 (property sources) 或者针对上下文的环境信息 environment 激活相应的 profile<br><strong>代码实现</strong><br>默认的 application.properties 文件 (默认指定为生产环境)</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/design12181104/#more" rel="contents">
+              <a class="btn" href="/2019/springboot12171121/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -561,7 +551,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/design12181105/">
+    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/springboot10201121/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -575,7 +565,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/design12181105/" class="post-title-link" itemprop="url">设计模式-模板方法模式</a>
+            <a href="/2019/springboot10201121/" class="post-title-link" itemprop="url">springBoot 事件监听和部分注解的运用</a>
         </h2>
 
         <div class="post-meta">
@@ -585,14 +575,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-11-24 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-24T00:00:00+08:00">2019-11-24</time>
+              <time title="创建时间：2019-10-20 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-20T00:00:00+08:00">2019-10-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 13:44:54" itemprop="dateModified" datetime="2019-12-18T13:44:54+08:00">2019-12-18</time>
+                <time title="修改时间：2019-12-18 11:34:55" itemprop="dateModified" datetime="2019-12-18T11:34:55+08:00">2019-12-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -600,8 +590,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">微服务</span>
                   </a>
                 </span>
             </span>
@@ -615,122 +605,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/design12181105/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/design12181105/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>12k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>模板方法模式<br>定义：在一个方法中定义一个算法的骨架，将一些处理的步骤延迟到子类去做处理，可以使在子类不改变算法结构的情况下， 重新定义算法的步骤。</p>
-</blockquote>
-<h3 id="设计院原则"><a href="#设计院原则" class="headerlink" title="设计院原则"></a>设计院原则</h3><p>好莱坞原则：别调用我们，我们会调用你。</p>
-<p>先来看下简单的代码实现：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/design12181105/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-	
-	<div>
-	  
-	</div>
-
-	
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/design12181102/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="阿杰">
-      <meta itemprop="description" content="小码农跟大家一起进步">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JAVA知识总结与分享">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/design12181102/" class="post-title-link" itemprop="url">设计模式-迭代器模式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-22 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-22T00:00:00+08:00">2019-11-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 13:47:26" itemprop="dateModified" datetime="2019-12-18T13:47:26+08:00">2019-12-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/design12181102/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/design12181102/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/springboot10201121/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/springboot10201121/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -752,586 +628,252 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>迭代器模式<br>提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露其内部的表示</p>
-</blockquote>
-<h3 id="情节"><a href="#情节" class="headerlink" title="情节"></a>情节</h3><p>有两家餐厅，共有两个菜单，两家准备合并，每个餐厅都有一个销售系统，但是内部菜单的组成结构稍有不同，一个是用数组存储菜单对象，一个是用集合存储菜单对象</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>将两个菜单合并显示</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/design12181102/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-	
-	<div>
-	  
-	</div>
-
-	
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/design12181101/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="阿杰">
-      <meta itemprop="description" content="小码农跟大家一起进步">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JAVA知识总结与分享">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/design12181101/" class="post-title-link" itemprop="url">设计模式-抽象工厂模式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-20 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-20T00:00:00+08:00">2019-11-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 13:47:38" itemprop="dateModified" datetime="2019-12-18T13:47:38+08:00">2019-12-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/design12181101/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/design12181101/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>25k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>老板：阿飞，上次面包店老板找我聊了一下，他们是大规模的从各大小原料商铺进的原料，出现了好多偷工减料的情况，现在他们做大了，想自己开几个原料提供点，如果中国的顾客去买，发现原料用尽，就要去找中国原料提供点，拿原料，这个功能看看好不好实现，如果好实现，你就开始做吧！</p>
-<p>项目组长阿飞：这个可以实现，我去操作吧</p>
-<p>项目组长阿飞：小三，来需求了…………, 听懂了吗？你应该知道怎么拓展代码。</p>
-<p>阿三：嗯嗯，我知道，我去拓展一下</p>
-<p>三天过后。。</p>
-<p>阿三：飞哥，设计好了，你看下。</p>
-<p>这个是一个地址描述类，主要是表明是哪个地区的，有什么不同，这个是可以拓展的</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/design12181101/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-	
-	<div>
-	  
-	</div>
-
-	
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/design12181103/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="阿杰">
-      <meta itemprop="description" content="小码农跟大家一起进步">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JAVA知识总结与分享">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/design12181103/" class="post-title-link" itemprop="url">设计模式-工厂模式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-18 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-18T00:00:00+08:00">2019-11-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 13:47:27" itemprop="dateModified" datetime="2019-12-18T13:47:27+08:00">2019-12-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/design12181103/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/design12181103/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>19k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>老板：阿飞啊，我们公司最近接了个项目，你看着设计一下，我给你说下需求。<br>项目组长阿飞：好啊，什么需求？<br>老板：我们找了一个合作的商铺，他们要设计一套面包销售系统。主要功能，根据用户选择的面包种类来下订单，面包目前有奶油口味面包和苹果口味面包，所有面包的制作流程都是 — 搅拌，搓圆，加工，烘烤。<br>项目组长阿飞：好的，我去想想怎么设计。<br>项目组长阿飞：小三啊，我给你个任务，…………, 听懂了吗？<br>阿三：听懂了，飞哥。<br>项目组长阿飞：嗯嗯，好的，这个任务就交给你了，我要去处理点事情，我相信你。<br>阿三：。。。<br>三天过后。<br>阿三：飞哥，设计好了，你看下。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/design12181103/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-	
-	<div>
-	  
-	</div>
-
-	
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/datastructure12181140/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="阿杰">
-      <meta itemprop="description" content="小码农跟大家一起进步">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JAVA知识总结与分享">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/datastructure12181140/" class="post-title-link" itemprop="url">数据结构-栈</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-14T00:00:00+08:00">2019-11-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 13:44:37" itemprop="dateModified" datetime="2019-12-18T13:44:37+08:00">2019-12-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构与算法</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/datastructure12181140/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/datastructure12181140/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>8.9k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>数据结构 - 栈</p>
-</blockquote>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>栈（英语：stack）又称为堆栈或堆叠，栈作为一种数据结构，它按照先进后出的原则存储数据，先进入的数据被压入栈底，最后的数据在栈顶，需要读数据的时候从栈顶开始弹出数据（最后一个数据被第一个读出来）。<br>　　由于堆叠数据结构只允许在一端进行操作，因而按照后进先出（LIFO, Last In First Out）的原理运作。栈也称为后进先出表</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/datastructure12181140/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-	
-	<div>
-	  
-	</div>
-
-	
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/datastructure12181139/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="阿杰">
-      <meta itemprop="description" content="小码农跟大家一起进步">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JAVA知识总结与分享">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/datastructure12181139/" class="post-title-link" itemprop="url">数据结构-队列</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-11 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-11T00:00:00+08:00">2019-11-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 13:44:59" itemprop="dateModified" datetime="2019-12-18T13:44:59+08:00">2019-12-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构与算法</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/datastructure12181139/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/datastructure12181139/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>19k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>数据结构 - 队列</p>
-</blockquote>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>队列（queue）在计算机科学中，是一种先进先出的线性表。<br>它只允许在表的前端进行删除操作，而在表的后端进行插入操作。进行插入操作的端称为队尾，进行删除操作的端称为队头。队列中没有元素时，称为空队列。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/datastructure12181139/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-	
-	<div>
-	  
-	</div>
-
-	
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/datastructure12181129/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="阿杰">
-      <meta itemprop="description" content="小码农跟大家一起进步">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JAVA知识总结与分享">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/datastructure12181129/" class="post-title-link" itemprop="url">数据结构-数组</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-07 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-07T00:00:00+08:00">2019-11-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 13:45:00" itemprop="dateModified" datetime="2019-12-18T13:45:00+08:00">2019-12-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构与算法</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/datastructure12181129/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/datastructure12181129/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>25k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p> 数据结构 - 数组</p>
-</blockquote>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
-<li><p>数据结构中最基本的一个结构就是<strong>线性结构</strong>，而线性结构又分为连续存储结构和离散存储结构。所谓的<strong>连续存储结构</strong>其实就是数组。</p>
-</li>
-<li><p><strong>优点：</strong>插入块如果知道坐标可以快速去地存取</p>
-</li>
-<li><p><strong>缺点：</strong>查找慢, 删除慢, 大小固定</p>
-</li>
+          <h3 id="ConfigurationProperties-注解的使用"><a href="#ConfigurationProperties-注解的使用" class="headerlink" title="@ConfigurationProperties 注解的使用"></a>@ConfigurationProperties 注解的使用</h3><p>用处</p>
+<ul>
+<li>根据类型校验和管理 application 中的 bean</li>
 </ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/datastructure12181129/#more" rel="contents">
+              <a class="btn" href="/2019/springboot10201121/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+	
+	<div>
+	  
+	</div>
+
+	
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/springboot10151121/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="阿杰">
+      <meta itemprop="description" content="小码农跟大家一起进步">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JAVA知识总结与分享">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/springboot10151121/" class="post-title-link" itemprop="url">springboot 配置环境动态切换和部分注解的运用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-15 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-15T00:00:00+08:00">2019-10-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-18 11:35:11" itemprop="dateModified" datetime="2019-12-18T11:35:11+08:00">2019-12-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">微服务</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/springboot10151121/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/springboot10151121/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>21k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="springBoot-配置环境动态切换"><a href="#springBoot-配置环境动态切换" class="headerlink" title="springBoot 配置环境动态切换"></a>springBoot 配置环境动态切换</h3><p>建立第一个配置文件（springBoot 默认读取的文件）application.properties</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">test.name</span>=default</span><br><span class="line"><span class="attr">test.defaultAge</span>=<span class="number">12</span></span><br><span class="line"><span class="attr">test.name</span>=default</span><br><span class="line"><span class="attr">test.defaultAge</span>=<span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<p>建立第二个配置文件（开发环境）application-dev.properties</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">test.name</span>=dev</span><br><span class="line"><span class="attr">test.devAge</span>=<span class="number">13</span></span><br><span class="line"><span class="attr">test.name</span>=dev</span><br><span class="line"><span class="attr">test.devAge</span>=<span class="number">13</span></span><br></pre></td></tr></table></figure>
+
+<p>建立第三个配置文件（用户验收测试环境）application-uat.properties</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">test.name</span>=uat</span><br><span class="line"><span class="attr">test.uatAge</span>=<span class="number">14</span></span><br><span class="line"><span class="attr">test.name</span>=uat</span><br><span class="line"><span class="attr">test.uatAge</span>=<span class="number">14</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>添加启动参数 (–spring.profiles.active=), 测试结果读取 application.properties 的值  </li>
+<li>添加启动参数 (–spring.profiles.active=dev), 测试结果读取 application-dev.properties 的值  </li>
+<li>添加启动参数 (–spring.profiles.active=uat), 测试结果读取 application-uat.properties 的值  </li>
+<li>添加启动参数 (–spring.profiles.active=uat,dev), 测试结果读取 application-dev.properties 的值  </li>
+<li>添加启动参数 (–spring.profiles.active=dev,uat), 测试结果读取 application-uat.properties 的值  </li>
+<li>添加启动参数 (–spring.profiles.active=dev)，可以读到 application.properties 的(test.defaultAge) 值，读不到 uat 的 (test.uatAge) 值。  </li>
+<li>添加启动参数 (–spring.profiles.active=uat)，可以读到 application.properties 的(test.defaultAge) 值，读不到 dev 的 (test.devAge) 值。  </li>
+<li>添加启动参数 (–spring.profiles.active=), 可以读到 application.properties 的值，读取不到其他配置文件的值</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/springboot10151121/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+	
+	<div>
+	  
+	</div>
+
+	
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.yangxj.top/2019/springboot10121121/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="阿杰">
+      <meta itemprop="description" content="小码农跟大家一起进步">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JAVA知识总结与分享">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/springboot10121121/" class="post-title-link" itemprop="url">springboot 建立项目与读取配置文件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-12 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-12T00:00:00+08:00">2019-10-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-18 11:34:42" itemprop="dateModified" datetime="2019-12-18T11:34:42+08:00">2019-12-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">微服务</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/springboot10121121/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/springboot10121121/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>16k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="建立maven-项目"><a href="#建立maven-项目" class="headerlink" title="建立maven 项目"></a>建立maven 项目</h2><p><img src="http://q2jt1v8qv.bkt.clouddn.com/FtFrvuJqSZdUsgp4WXO_L33lLgjC" alt></p>
+<p><img src="http://q2jt1v8qv.bkt.clouddn.com/FoQAAKtK5UpHyxrdeP2N8iLFpOSv" alt></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/springboot10121121/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1361,7 +903,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 
