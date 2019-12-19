@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>JAVA知识总结与分享</title>
   
-  <subtitle>阿杰</subtitle>
+  <subtitle>JAVA知识总结与分享</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yangxj.top/"/>
@@ -10,7 +10,7 @@
   <id>http://www.yangxj.top/</id>
   
   <author>
-    <name>阿杰</name>
+    <name>非常热爱学习的阿杰</name>
     
   </author>
   
