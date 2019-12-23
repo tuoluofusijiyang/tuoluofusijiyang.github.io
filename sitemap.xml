@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.yangxj.top/about/index.html</loc>
+    
+    <lastmod>2019-12-23T08:06:06.316Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.yangxj.top/2019/springboot003/</loc>
     
     <lastmod>2019-12-19T02:26:11.899Z</lastmod>
@@ -110,13 +117,6 @@
     <loc>http://www.yangxj.top/2019/design002/</loc>
     
     <lastmod>2019-12-19T02:24:21.717Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.yangxj.top/about/index.html</loc>
-    
-    <lastmod>2019-12-18T01:22:08.789Z</lastmod>
     
   </url>
   
